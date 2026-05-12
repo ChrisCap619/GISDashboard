@@ -14,7 +14,7 @@
 
   header {
     text-align: center;
-    padding: 40px 20px 20px 20px;
+    padding: 40px 20px 10px 20px;
   }
 
   header h1 {
@@ -24,20 +24,10 @@
 
   header p {
     color: #cbd5e1;
+    margin-top: 0;
   }
 
-  /* SEARCH BAR */
-  #search {
-    width: 320px;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    display: block;
-    margin: 20px auto;
-    font-size: 14px;
-  }
-
-  /* CARDS */
+  /* CARD LAYOUT */
   .container {
     display: flex;
     justify-content: center;
@@ -52,7 +42,7 @@
     width: 300px;
     padding: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    transition: 0.2s;
+    transition: 0.2s ease;
   }
 
   .card:hover {
@@ -109,7 +99,7 @@
   /* BUTTONS */
   .buttons {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   .map-btn {
@@ -133,7 +123,6 @@
     font-size: 12px;
     color: #94a3b8;
   }
-
 </style>
 </head>
 
@@ -144,28 +133,25 @@
   <p>Interactive analysis of vegetation, income, and vulnerability across California cities</p>
 </header>
 
-<!-- SEARCH BAR -->
-<input id="search" placeholder="Search city (SF, SD, LA)">
-
-<!-- CITY CARDS (LEVEL 1) -->
+<!-- CITY CARDS -->
 <div class="container">
 
   <div class="card">
-    <img src="SFMap.png">
+    <img src="./SF.png">
     <h2>San Francisco</h2>
-    <p>Vegetation and socioeconomic analysis for SF ZIP areas.</p>
+    <p>Vegetation, income, and environmental inequity analysis.</p>
     <a class="btn" href="#" onclick="showMap('sf')">View Map</a>
   </div>
 
   <div class="card">
-    <img src="SDMap.png">
+    <img src="./SD.png">
     <h2>San Diego</h2>
     <p>Urban green space and income distribution patterns.</p>
     <a class="btn" href="#" onclick="showMap('sd')">View Map</a>
   </div>
 
   <div class="card">
-    <img src="LAMap.png">
+    <img src="./LA.png">
     <h2>Los Angeles</h2>
     <p>Environmental vulnerability and inequality patterns.</p>
     <a class="btn" href="#" onclick="showMap('la')">View Map</a>
@@ -173,20 +159,19 @@
 
 </div>
 
-<!-- MAP SWITCHER (LEVEL 3) -->
+<!-- MAP BUTTONS -->
 <div class="buttons">
   <button class="map-btn" onclick="showMap('sf')">San Francisco</button>
   <button class="map-btn" onclick="showMap('sd')">San Diego</button>
   <button class="map-btn" onclick="showMap('la')">Los Angeles</button>
 </div>
 
+<!-- MAP DISPLAY AREA -->
 <div id="mapContainer"></div>
 
 <footer>
   Created for GSP 318 – Geospatial Programming 1
 </footer>
-
-<!-- SCRIPTS -->
 
 <script>
 function showMap(city) {
@@ -202,19 +187,6 @@ function showMap(city) {
     container.innerHTML = `<iframe src="LAMap.html"></iframe>`;
   }
 }
-
-/* SEARCH FILTER */
-const search = document.getElementById("search");
-const cards = document.querySelectorAll(".card");
-
-search.addEventListener("keyup", function () {
-  const value = search.value.toLowerCase();
-
-  cards.forEach(card => {
-    const text = card.innerText.toLowerCase();
-    card.style.display = text.includes(value) ? "block" : "none";
-  });
-});
 </script>
 
 </body>
