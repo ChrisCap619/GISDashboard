@@ -2,51 +2,73 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GIS Environmental Inequity Dashboard</title>
+<title>GIS Environmental Inequity Portfolio</title>
 
 <style>
   body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #0b1220;
+    color: #e5e7eb;
+    line-height: 1.6;
   }
 
-  header {
+  /* HERO SECTION */
+  .hero {
+    padding: 70px 20px 40px;
     text-align: center;
-    padding: 40px 20px 10px 20px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
   }
 
-  header h1 {
-    font-size: 34px;
-    margin-bottom: 8px;
+  .hero h1 {
+    font-size: 38px;
+    margin-bottom: 10px;
   }
 
-  header p {
+  .hero p {
+    max-width: 800px;
+    margin: 0 auto;
     color: #cbd5e1;
-    margin-top: 0;
+    font-size: 16px;
   }
 
-  /* CARD LAYOUT */
+  /* SECTION HEADERS */
+  .section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  .section h2 {
+    color: #60a5fa;
+    margin-bottom: 10px;
+  }
+
+  .section p {
+    color: #cbd5e1;
+  }
+
+  /* CARDS */
   .container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 25px;
-    padding: 20px;
+    margin-top: 30px;
   }
 
   .card {
     background: #111827;
-    border-radius: 15px;
+    border-radius: 14px;
     width: 300px;
     padding: 15px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    transition: 0.2s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
 
   .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
   }
 
   .card img {
@@ -55,9 +77,9 @@
     margin-bottom: 10px;
   }
 
-  .card h2 {
+  .card h3 {
     color: #60a5fa;
-    margin: 10px 0 5px;
+    margin-bottom: 5px;
   }
 
   .card p {
@@ -67,7 +89,7 @@
 
   .btn {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 12px;
     padding: 10px 14px;
     background: #3b82f6;
     color: white;
@@ -80,114 +102,95 @@
     background: #2563eb;
   }
 
-  /* MAP VIEWER */
-  #mapContainer {
-    width: 95%;
-    margin: 30px auto;
-    height: 750px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  /* METHOD SECTION */
+  .method-box {
+    background: #0f172a;
+    border-left: 4px solid #3b82f6;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
   }
 
-  iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-
-  /* BUTTONS */
-  .buttons {
-    text-align: center;
-    margin-top: 10px;
-  }
-
-  .map-btn {
-    padding: 10px 16px;
-    margin: 5px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    background: #334155;
-    color: white;
-    font-weight: bold;
-  }
-
-  .map-btn:hover {
-    background: #475569;
-  }
-
+  /* FOOTER */
   footer {
     text-align: center;
-    padding: 30px;
+    padding: 40px;
     font-size: 12px;
     color: #94a3b8;
+    background: #0b1220;
   }
+
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Environmental Inequity GIS Dashboard</h1>
-  <p>Interactive analysis of vegetation, income, and vulnerability across California cities</p>
-</header>
-
-<!-- CITY CARDS -->
-<div class="container">
-
-  <div class="card">
-    <img src="./SF.png">
-    <h2>San Francisco</h2>
-    <p>Vegetation, income, and environmental inequity analysis.</p>
-    <a class="btn" href="#" onclick="showMap('sf')">View Map</a>
-  </div>
-
-  <div class="card">
-    <img src="./SD.png">
-    <h2>San Diego</h2>
-    <p>Urban green space and income distribution patterns.</p>
-    <a class="btn" href="#" onclick="showMap('sd')">View Map</a>
-  </div>
-
-  <div class="card">
-    <img src="./LA.png">
-    <h2>Los Angeles</h2>
-    <p>Environmental vulnerability and inequality patterns.</p>
-    <a class="btn" href="#" onclick="showMap('la')">View Map</a>
-  </div>
-
+<!-- HERO -->
+<div class="hero">
+  <h1>Environmental Inequity GIS Portfolio</h1>
+  <p>
+    A spatial analysis of urban vegetation, income distribution, and environmental vulnerability
+    across major California metropolitan regions using geospatial programming and interactive mapping.
+  </p>
 </div>
 
-<!-- MAP BUTTONS -->
-<div class="buttons">
-  <button class="map-btn" onclick="showMap('sf')">San Francisco</button>
-  <button class="map-btn" onclick="showMap('sd')">San Diego</button>
-  <button class="map-btn" onclick="showMap('la')">Los Angeles</button>
+<!-- PROJECT OVERVIEW -->
+<div class="section">
+  <h2>Project Overview</h2>
+  <p>
+    This project investigates environmental inequity across San Francisco, San Diego, and Los Angeles
+    by combining vegetation density, median household income, and a computed vulnerability index.
+    The goal is to identify spatial disparities that may reflect unequal access to environmental resources.
+  </p>
 </div>
 
-<!-- MAP DISPLAY AREA -->
-<div id="mapContainer"></div>
+<!-- CITY MAPS -->
+<div class="section">
+  <h2>Interactive City Maps</h2>
 
+  <div class="container">
+
+    <div class="card">
+      <img src="./SF.png">
+      <h3>San Francisco</h3>
+      <p>Urban vegetation distribution and socioeconomic patterns.</p>
+      <a class="btn" href="SFMap.html">View Map</a>
+    </div>
+
+    <div class="card">
+      <img src="./SD.png">
+      <h3>San Diego</h3>
+      <p>Green space coverage and income variability across ZIP regions.</p>
+      <a class="btn" href="SDMap.html">View Map</a>
+    </div>
+
+    <div class="card">
+      <img src="./LA.png">
+      <h3>Los Angeles</h3>
+      <p>Environmental vulnerability index and urban inequality patterns.</p>
+      <a class="btn" href="LAMap.html">View Map</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- METHODOLOGY -->
+<div class="section">
+  <h2>Methodology</h2>
+
+  <div class="method-box">
+    <p><b>Data Sources:</b> Census ZIP boundary shapefiles with income and vegetation attributes.</p>
+    <p><b>Processing:</b> Data cleaned and reprojected to EPSG:4326 for web mapping compatibility.</p>
+    <p><b>Analysis:</b> Vegetation ratio and income were normalized using percentile ranking.</p>
+    <p><b>Index Creation:</b> Environmental inequity index calculated as combined inverse of vegetation and income ranks.</p>
+    <p><b>Classification:</b> Natural Breaks (Jenks) used to categorize spatial patterns into 5 classes.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  Created for GSP 318 – Geospatial Programming 1
+  Created for GSP 318 – Geospatial Programming 1 | GIS Portfolio Project
 </footer>
-
-<script>
-function showMap(city) {
-  const container = document.getElementById("mapContainer");
-
-  if (city === "sf") {
-    container.innerHTML = `<iframe src="SFMap.html"></iframe>`;
-  }
-  if (city === "sd") {
-    container.innerHTML = `<iframe src="SDMap.html"></iframe>`;
-  }
-  if (city === "la") {
-    container.innerHTML = `<iframe src="LAMap.html"></iframe>`;
-  }
-}
-</script>
 
 </body>
 </html>
